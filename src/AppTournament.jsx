@@ -1,25 +1,17 @@
-import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import AppRoutes from "@/routes/AppRoutes";
 import { OrganizerProvider } from "@/context/OrganizerContext";
-import { ThemeProvider } from "@/context/ThemeContext";
 
- 
+const queryClient = new QueryClient();
 
-function App() {
-  const queryClient = new QueryClient();
-
+export default function AppTournament() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <OrganizerProvider>
-          <AppRoutes />
-        </OrganizerProvider>
-      </ThemeProvider>
+      <OrganizerProvider>
+        <AppRoutes />
+      </OrganizerProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
-
-export default App;
