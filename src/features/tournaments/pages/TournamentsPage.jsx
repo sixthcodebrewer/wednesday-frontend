@@ -58,7 +58,7 @@ export default function TournamentsPage() {
           ))}
         </div>
       ) : (
-        <TournamentList tournaments={tournaments} />
+        <TournamentList tournaments={tournaments} isLoading={isLoading} />
       )}
     </div>
   );
