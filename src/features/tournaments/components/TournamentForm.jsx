@@ -11,7 +11,7 @@ export default function TournamentForm({ onCreated }) {
     name: "",
     number_of_teams: "",
     venue: "",
-    kind_of_match: "points",
+    kind_of_match: "Football",
   });
   const { mutateAsync, isPending } = useCreateTournament();
 
@@ -61,17 +61,26 @@ export default function TournamentForm({ onCreated }) {
             <Input id="venue" name="venue" placeholder="Main Arena" value={form.venue} onChange={onChange} required />
           </div>
           <div className="grid gap-2 sm:col-span-2">
-            <Label>Kind of Match</Label>
+            <Label>Game</Label>
             <Select
-              defaultValue="points"
-              value={form.kind_of_match || "points"}
+              defaultValue="Football"
+              value={form.kind_of_match || "Football"}
               onValueChange={(v) => setForm((f) => ({ ...f, kind_of_match: v }))}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Select type" />
+                <SelectValue placeholder="Select game" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="points">Points</SelectItem>
+                <SelectItem value="Football">Football</SelectItem>
+                <SelectItem value="Cricket">Cricket</SelectItem>
+                <SelectItem value="Basketball">Basketball</SelectItem>
+                <SelectItem value="Tennis">Tennis</SelectItem>
+                <SelectItem value="Badminton">Badminton</SelectItem>
+                <SelectItem value="Volleyball">Volleyball</SelectItem>
+                <SelectItem value="Hockey">Hockey</SelectItem>
+                <SelectItem value="Baseball">Baseball</SelectItem>
+                <SelectItem value="Rugby">Rugby</SelectItem>
+                <SelectItem value="Table Tennis">Table Tennis</SelectItem>
               </SelectContent>
             </Select>
           </div>
