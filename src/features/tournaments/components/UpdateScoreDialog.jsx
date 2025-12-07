@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogT
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useUpdateMatchScore } from "../api/useUpdateMatchScore";
+import { Loader2 } from "lucide-react";
 
 export default function UpdateScoreDialog({ open, onOpenChange, match, tournamentId }) {
   const id = match?.id || match?._id;
@@ -52,8 +53,11 @@ export default function UpdateScoreDialog({ open, onOpenChange, match, tournamen
           </div>
         </div>
         <DialogFooter>
-          <Button variant="ghost" onClick={() => onOpenChange?.(false)}>Cancel</Button>
-          <Button onClick={handleSave} disabled={isPending}>{isPending ? "Saving..." : "Save"}</Button>
+          <Button variant="ghost" onClick={() => onOpenChange?.(false)} disabled={isPending}>Cancel</Button>
+          <Button onClick={handleSave} disabled={isPending}>
+            {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            {isPending ? "Saving..." : "Save"}
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

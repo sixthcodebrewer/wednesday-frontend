@@ -12,7 +12,18 @@ export default function TournamentMatchesPage() {
   return (
     <div className="container mx-auto p-4 space-y-4">
       <h1 className="text-2xl font-semibold">Matches</h1>
-      {isLoading ? <div>Loading matches...</div> : <MatchList matches={matches} tournamentId={tournamentId} />}
+      {isLoading ? (
+        <div className="grid gap-4">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div key={i} className="rounded-lg border p-4">
+              <div className="h-5 w-2/3 animate-pulse rounded bg-muted mb-3" />
+              <div className="h-4 w-1/3 animate-pulse rounded bg-muted" />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <MatchList matches={matches} tournamentId={tournamentId} />
+      )}
     </div>
   );
 }

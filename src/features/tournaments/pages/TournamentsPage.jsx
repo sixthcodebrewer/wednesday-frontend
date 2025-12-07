@@ -45,7 +45,18 @@ export default function TournamentsPage() {
       )}
 
       {isLoading ? (
-        <div>Loading tournaments...</div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="rounded-lg border p-4">
+              <div className="h-5 w-2/3 animate-pulse rounded bg-muted mb-4" />
+              <div className="space-y-2">
+                <div className="h-4 w-1/2 animate-pulse rounded bg-muted" />
+                <div className="h-4 w-1/3 animate-pulse rounded bg-muted" />
+                <div className="h-8 w-24 animate-pulse rounded bg-muted" />
+              </div>
+            </div>
+          ))}
+        </div>
       ) : (
         <TournamentList tournaments={tournaments} />
       )}
