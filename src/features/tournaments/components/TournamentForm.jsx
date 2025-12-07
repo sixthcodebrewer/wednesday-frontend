@@ -11,7 +11,7 @@ export default function TournamentForm({ onCreated }) {
     name: "",
     number_of_teams: "",
     venue: "",
-    kind_of_match: "",
+    kind_of_match: "points",
   });
   const { mutateAsync, isPending } = useCreateTournament();
 
@@ -23,10 +23,10 @@ export default function TournamentForm({ onCreated }) {
       name: form.name,
       number_of_teams: Number(form.number_of_teams),
       venue: form.venue,
-      kind_of_match: form.kind_of_match,
+      kind_of_match: form.kind_of_match || "points",
     };
     await mutateAsync(payload);
-    setForm({ name: "", number_of_teams: "", venue: "", kind_of_match: "" });
+    setForm({ name: "", number_of_teams: "", venue: "", kind_of_match: "points" });
     onCreated?.();
   }
 
